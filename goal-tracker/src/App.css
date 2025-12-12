@@ -1,0 +1,1272 @@
+/* Змінні для світлої (дефолтної) теми */
+:root {
+  --primary: #6366f1;
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --text: #1e293b;
+  --text-secondary: #64748b;
+  --border: #e2e8f0;
+  --success: #10b981;
+}
+
+/* Змінні для ТЕМНОЇ теми */
+[data-theme='dark'] {
+  --primary: #818cf8;
+  --bg: #0f172a;
+  --card: #1e293b;
+  --text: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --border: #334155;
+  --success: #34d399;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s; /* Плавний перехід теми */
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* Header & Logo */
+.app-header {
+  background: var(--card);
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--border);
+}
+
+.header-content {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-section { display: flex; align-items: center; gap: 10px; }
+.logo { font-weight: 800; font-size: 1.5rem; color: var(--primary); }
+.level-badge {
+  background: var(--primary);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.main-nav { display: flex; gap: 20px; align-items: center; }
+.main-nav a { font-weight: 500; color: var(--text-secondary); transition: color 0.2s; }
+.main-nav a:hover, .main-nav a.active { color: var(--primary); }
+
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  padding: 5px 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.btn-nav-create {
+  background: var(--primary);
+  color: white !important;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+
+/* Dashboard XP Section */
+.welcome-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.level-circle {
+  width: 60px;
+  height: 60px;
+  background: var(--primary);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(99, 102, 241, 0.4);
+}
+
+.card {
+  background: var(--card);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  border: 1px solid var(--border);
+}
+
+.xp-container { margin-bottom: 2rem; }
+.xp-header { display: flex; justify-content: space-between; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem;}
+.xp-bar-bg { background: var(--border); height: 10px; border-radius: 5px; overflow: hidden; }
+.xp-bar-fill {
+  background: linear-gradient(90deg, var(--primary) 0%, #a5b4fc 100%);
+  height: 100%;
+  transition: width 0.5s ease-out;
+}
+.xp-text { font-size: 0.8rem; color: var(--text-secondary); margin-top: 8px; text-align: center; }
+
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 2rem;
+}
+
+.stat-card { text-align: center; background: var(--card); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border); }
+.stat-number { font-size: 2.5rem; font-weight: 700; margin: 10px 0; color: var(--primary); }
+.success .stat-number { color: var(--success); }
+
+/* Goal Items & Inputs (Темна тема адаптація) */
+.input-field, .select-field {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  border-radius: 8px;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+
+.goal-item {
+  background: var(--card);
+  padding: 1.2rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+  border: 1px solid var(--border);
+}
+
+.filters button { padding: 8px 16px; border: none; background: var(--border); color: var(--text-secondary); border-radius: 20px; margin-left: 10px; cursor: pointer; }
+.filters button.active { background: var(--primary); color: white; }
+
+.main-content { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+.fade-in { animation: fadeIn 0.5s ease-in; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Dashboard Columns (2 колонки: Графік + Ачівки) */
+.dashboard-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 2rem;
+}
+
+/* Адаптивність для мобільних */
+@media (max-width: 768px) {
+  .dashboard-columns {
+    grid-template-columns: 1fr;
+  }
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Achievements */
+.achievements-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.achievement-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  background: var(--bg);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.achievement-icon {
+  font-size: 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.achievement-info h4 {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.achievement-desc {
+  font-size: 0.75rem;
+  color: var(--success);
+  font-weight: 600;
+}
+
+/* Chart Container */
+.chart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+/* Kanban Board */
+.kanban-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 колонки */
+  gap: 20px;
+  height: calc(100vh - 150px); /* На весь екран */
+  overflow-x: auto;
+}
+
+.kanban-column {
+  background: #f1f5f9;
+  border-radius: 12px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+[data-theme='dark'] .kanban-column {
+  background: #1e293b;
+}
+
+.col-header {
+  padding: 10px;
+  margin: 0 0 10px 0;
+  border-radius: 8px;
+  text-align: center;
+  color: white;
+}
+
+.col-header.todo { background: #64748b; }
+.col-header.in_progress { background: #f59e0b; }
+.col-header.done { background: #10b981; }
+
+.kanban-list {
+  flex-grow: 1;
+  min-height: 100px;
+  padding: 5px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.kanban-list.dragging-over {
+  background: rgba(99, 102, 241, 0.1);
+}
+
+/* Goal Card in Kanban */
+.goal-card-dnd {
+  background: var(--card);
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  border: 1px solid var(--border);
+  cursor: grab;
+}
+
+.goal-card-dnd:active {
+  cursor: grabbing;
+  transform: rotate(2deg); /* Ефект при перетягуванні */
+}
+
+.goal-header-dnd {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.badges { display: flex; gap: 5px; }
+.badge { font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; color: white; }
+.badge.category { background: var(--primary); }
+
+.mini-progress {
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  margin-top: 8px;
+}
+.mini-bar {
+  height: 100%;
+  background: var(--success);
+  transition: width 0.3s;
+}
+
+/* Subtasks */
+.subtasks-area {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border);
+}
+
+.subtasks-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.subtasks-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+}
+
+.subtasks-list li.completed span {
+  text-decoration: line-through;
+  color: var(--text-secondary);
+}
+
+.add-step-form {
+  display: flex;
+  gap: 5px;
+  margin-top: 8px;
+}
+.add-step-form input {
+  flex: 1;
+  padding: 4px;
+  font-size: 0.8rem;
+}
+
+/* --- Стилізація форми створення --- */
+
+.form-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.form-header h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(90deg, var(--primary) 0%, #a855f7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.form-header p {
+  color: var(--text-secondary);
+}
+
+.form-card {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2.5rem;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text);
+  font-size: 0.9rem;
+}
+
+/* Інпути */
+.input-field, .select-field {
+  width: 100%;
+  padding: 14px;
+  background: var(--bg);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  font-size: 1rem;
+  color: var(--text);
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.input-field:focus, .select-field:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+
+/* Дата пікер (Календар) - MODERN LOOK */
+.date-input {
+  font-family: inherit;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Магія для іконки календаря */
+::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.6;
+  transition: 0.2s;
+}
+
+::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* ВАЖЛИВО: Інверсія іконки для темної теми */
+[data-theme='dark'] ::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+/* Кнопка створення - MODERN BUTTON */
+.btn-create {
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--primary) 0%, #4f46e5 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.3);
+}
+
+.btn-create:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.4);
+  background: linear-gradient(135deg, #4338ca 0%, #3730a3 100%);
+}
+
+.btn-create:active {
+  transform: translateY(1px);
+}
+
+.btn-icon {
+  font-size: 1.2rem;
+  transition: transform 0.3s;
+}
+
+.btn-create:hover .btn-icon {
+  transform: translateX(5px);
+}
+
+/* Адаптивність */
+@media (max-width: 600px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  .form-card {
+    padding: 1.5rem;
+  }
+}
+
+/* --- Landing Page --- */
+.landing-container {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.hero-section {
+  margin-bottom: 4rem;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.highlight {
+  background: linear-gradient(90deg, var(--primary) 0%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+}
+
+.btn-start {
+  display: inline-block;
+  padding: 16px 32px;
+  background: var(--primary);
+  color: white;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+.btn-start:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.feature-card {
+  background: var(--card);
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  transition: transform 0.3s;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+/* --- Habits Page --- */
+.add-habit-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.habits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.habit-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  background: var(--bg);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+}
+
+.habit-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  flex-grow: 1;
+}
+
+.habit-checkbox {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--text-secondary);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+}
+
+.habit-checkbox.checked {
+  background: var(--success);
+  border-color: var(--success);
+}
+
+.habit-item.completed {
+  opacity: 0.6;
+}
+
+.btn-reset {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* --- Diary Page --- */
+.diary-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .diary-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.diary-sidebar {
+  height: fit-content;
+}
+
+.diary-textarea {
+  width: 100%;
+  height: 400px;
+  padding: 20px;
+  background: var(--bg); /* Колір паперу */
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  resize: none;
+  color: var(--text);
+  box-sizing: border-box;
+}
+
+.diary-textarea:focus {
+  outline: 2px solid var(--primary);
+}
+
+.diary-actions {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* --- HABITS STYLES (Оновлені) --- */
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-top: -10px;
+}
+
+.add-habit-wrapper {
+  display: flex;
+  gap: 10px;
+}
+
+.habit-input {
+  flex-grow: 1;
+}
+
+.btn-add-habit {
+  width: 50px;
+  font-size: 1.5rem;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+}
+
+.habit-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 8px;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.habit-item:hover {
+  transform: translateX(5px);
+  border-color: var(--primary);
+}
+
+.habit-click-area {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-grow: 1;
+  cursor: pointer;
+}
+
+.custom-checkbox {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid var(--text-secondary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  transition: all 0.2s;
+}
+
+.custom-checkbox.checked {
+  background: var(--success);
+  border-color: var(--success);
+  transform: scale(1.1);
+}
+
+.habit-title {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 2px solid var(--border);
+  color: var(--text);
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.btn-icon-delete {
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0.3;
+  transition: opacity 0.2s;
+  font-size: 1.1rem;
+}
+
+.habit-item:hover .btn-icon-delete {
+  opacity: 1;
+}
+
+.btn-icon-delete:hover {
+  transform: scale(1.2);
+}
+
+/* --- DIARY LIST STYLES (Нові) --- */
+
+.diary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.diary-list {
+  display: grid;
+  gap: 15px;
+}
+
+.diary-card {
+  background: var(--card);
+  padding: 1.5rem;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+}
+
+.diary-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  border-color: var(--primary);
+}
+
+.diary-date-badge {
+  background: var(--bg);
+  padding: 10px;
+  border-radius: 12px;
+  text-align: center;
+  min-width: 60px;
+  border: 1px solid var(--border);
+}
+
+.diary-date-badge .day {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+}
+
+.diary-date-badge .month-year {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.diary-preview {
+  flex-grow: 1;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.editor-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.btn-back {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.btn-back:hover {
+  color: var(--primary);
+}
+
+.empty-state-small {
+  text-align: center;
+  padding: 20px;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.error-text {
+  color: #ef4444;
+  font-size: 0.85rem;
+  margin-left: 10px;
+}
+
+/* --- HABITS STYLES (Виправлення відступів) --- */
+
+/* Картка звичок (Стрілки 2 і 3 - відступи від країв) */
+.habits-card {
+  padding: 2rem; /* Більше простору всередині картки */
+  border-radius: 16px; /* Закруглені кути */
+}
+
+/* Форма додавання (Стрілка 3 - відступ між полем і кнопкою +) */
+.add-habit-wrapper {
+  display: flex;
+  gap: 15px; /* Відступ між інпутом і кнопкою плюса */
+  margin-bottom: 2rem; /* Відступ від форми до списку звичок знизу */
+}
+
+.habit-input {
+  flex-grow: 1;
+  padding: 14px 18px; /* Більш "жирний" інпут */
+  border-radius: 12px;
+}
+
+/* Кнопка + (Плюс) */
+.btn-add-habit {
+  width: 54px;
+  height: 54px; /* Робимо її квадратною */
+  border-radius: 12px;
+  font-size: 1.8rem;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--card); /* Або білий, або колір картки */
+  color: var(--text);
+  border: 2px solid var(--border);
+  transition: all 0.2s;
+}
+
+.btn-add-habit:hover {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+  transform: scale(1.05);
+}
+
+/* Кнопка "Новий день" (Стрілка 1) */
+.btn-reset {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+  transition: transform 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-reset:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(37, 99, 235, 0.3);
+}
+
+/* --- DIARY STYLES (Оновлення кнопки) --- */
+
+.diary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap; /* Щоб на мобільному не ламалось */
+  gap: 15px;
+}
+
+/* Нова "Багата" кнопка для щоденника */
+.btn-new-entry {
+  background: linear-gradient(135deg, var(--primary) 0%, #a855f7 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.35);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-new-entry:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
+  filter: brightness(1.1);
+}
+
+.btn-new-entry:active {
+  transform: translateY(-1px);
+}
+
+.loading-screen {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  color: var(--primary);
+}
+
+/* 1. Стилі для бургера та хедеру */
+.logo-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.burger-btn {
+  display: none; /* На комп'ютері ховаємо */
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: var(--text);
+  cursor: pointer;
+}
+
+/* 2. Медіа-запит для телефонів і планшетів */
+@media (max-width: 768px) {
+
+  /* --- Хедер --- */
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+  }
+
+  .burger-btn {
+    display: block; /* Показуємо бургер */
+  }
+
+  .main-nav {
+    display: none; /* Ховаємо меню за замовчуванням */
+    flex-direction: column;
+    width: 100%;
+    margin-top: 1rem;
+    gap: 15px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+    animation: slideDown 0.3s ease;
+  }
+
+  .main-nav.open {
+    display: flex; /* Показуємо, коли відкрите */
+  }
+
+  .main-nav a {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    background: var(--bg);
+    border-radius: 8px;
+  }
+
+  .mobile-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+  }
+
+  /* --- Дашборд --- */
+  .stats-grid {
+    grid-template-columns: 1fr; /* Одна колонка замість трьох */
+  }
+
+  .dashboard-columns {
+    grid-template-columns: 1fr; /* Графік під ачівками, а не збоку */
+  }
+
+  /* --- Канбан дошка --- */
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .page-header h2 {
+    margin-bottom: 5px;
+  }
+
+  .kanban-container {
+    grid-template-columns: 1fr; /* Колонки стають одна під одною */
+    height: auto; /* Прибираємо фіксовану висоту */
+    overflow-x: visible;
+  }
+
+  .kanban-column {
+    margin-bottom: 20px;
+  }
+
+  /* --- Щоденник --- */
+  .diary-layout {
+    grid-template-columns: 1fr; /* Сайдбар зверху, текст знизу */
+  }
+
+  .diary-textarea {
+    height: 250px; /* Менша висота на телефоні */
+  }
+
+  .diary-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .btn-new-entry {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* --- Звички та Форми --- */
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .add-habit-wrapper {
+    flex-direction: column;
+  }
+
+  .btn-add-habit {
+    width: 100%; /* Кнопка "+" на всю ширину */
+    height: 40px;
+    border-radius: 8px;
+  }
+
+  .habit-item {
+    flex-direction: row; /* Залишаємо в рядок, але кнопки можуть бути менші */
+  }
+
+  .form-card {
+    padding: 1.5rem; /* Менші відступи */
+  }
+
+  /* Лендінг */
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .main-content {
+    margin: 1rem auto; /* Менший відступ зверху */
+  }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   ГЛОБАЛЬНІ ВИПРАВЛЕННЯ (Desktop + Mobile)
+   ========================================= */
+
+/* 1. Глобальний скидання відступів, щоб нічого не вилазило */
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  overflow-x: hidden; /* Забороняємо горизонтальний скрол */
+  width: 100%;
+}
+
+/* 2. Контейнер сторінки - центрування та обмеження */
+.page-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* 3. Виправлення форми Звичок (Стрілки на скріншоті) */
+.habits-card {
+  padding: 25px !important;
+  border-radius: 16px;
+  background: var(--card);
+  width: 100%;
+}
+
+.add-habit-wrapper {
+  display: flex !important;
+  align-items: center !important;
+  gap: 15px !important; /* Відступ між інпутом і кнопкою */
+  width: 100% !important;
+  margin-bottom: 25px;
+}
+
+/* Інпут розтягується на всю доступну ширину */
+.habit-input {
+  flex: 1 !important; /* Займає все місце */
+  width: auto !important;
+  min-width: 0 !important; /* Фікс для переповнення */
+}
+
+/* Кнопка "+" фіксованого розміру */
+.btn-add-habit {
+  flex-shrink: 0 !important; /* Не стискається */
+  width: 50px !important;
+  height: 50px !important;
+}
+
+/* 4. Виправлення шапки сторінки (Кнопка "Новий день") */
+.page-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+/* 5. Виправлення пошуку на сторінці цілей */
+.search-input, .input-field {
+  width: 100% !important; /* Завжди на всю ширину */
+  box-sizing: border-box;
+}
+
+/* =========================================
+   МОБІЛЬНА АДАПТАЦІЯ (Телефони < 768px)
+   ========================================= */
+
+@media (max-width: 768px) {
+
+  /* Зменшуємо відступи контейнера */
+  .page-container {
+    padding: 15px !important;
+  }
+
+  /* --- Лендінг (Виправлення обрізаного тексту) --- */
+  .hero-title {
+    font-size: 2rem !important; /* Зменшуємо шрифт заголовка */
+    line-height: 1.2;
+    word-wrap: break-word; /* Перенос слів */
+  }
+
+  .hero-subtitle {
+    font-size: 1rem !important;
+  }
+
+  /* --- Звички --- */
+  .habits-card {
+    padding: 15px !important; /* Менше відступів всередині картки */
+  }
+
+  .add-habit-wrapper {
+    gap: 10px !important;
+  }
+
+  /* --- Хедер та Меню --- */
+  .header-content {
+    padding: 0 !important;
+  }
+
+  .burger-btn {
+    display: block !important;
+    margin-left: auto; /* Притискаємо вправо */
+  }
+
+  .logo-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .main-nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 15px;
+    background: var(--card);
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  }
+
+  .main-nav.open {
+    display: flex !important;
+  }
+
+  /* --- Інше --- */
+  .stats-grid, .dashboard-columns, .diary-layout, .form-grid, .kanban-container {
+    grid-template-columns: 1fr !important; /* Все в одну колонку */
+  }
+
+  .kanban-container {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+
+  .kanban-column {
+    min-height: 200px;
+    margin-bottom: 20px;
+  }
+
+  /* Кнопки на всю ширину */
+  .btn-create, .btn-new-entry, .btn-start {
+    width: 100% !important;
+    justify-content: center;
+  }
+}
