@@ -3,9 +3,8 @@ import { Link, useLocation } from 'react-router-dom';
 
 const Header = ({ theme, toggleTheme, userStats, currentUser, logout }) => {
     const location = useLocation();
-    const [isMenuOpen, setIsMenuOpen] = useState(false); // Стан для мобільного меню
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    // Функція, щоб закривати меню після кліку на посилання
     const closeMenu = () => setIsMenuOpen(false);
 
     return (
@@ -14,7 +13,7 @@ const Header = ({ theme, toggleTheme, userStats, currentUser, logout }) => {
                 <div className="logo-row">
                     <div className="logo-section">
                         <Link to="/" className="logo" onClick={closeMenu}>🚀 GoalMaster</Link>
-                        {location.pathname !== '/' && (
+                        {location.pathname !== '/' && currentUser && (
                             <div className="level-badge">Lvl {userStats.level}</div>
                         )}
                     </div>
@@ -28,33 +27,42 @@ const Header = ({ theme, toggleTheme, userStats, currentUser, logout }) => {
                     </button>
                 </div>
 
-                {/* Додаємо клас 'open', якщо меню відкрите */}
+                {/* Навігація */}
                 <nav className={`main-nav ${isMenuOpen ? 'open' : ''}`}>
-                    <Link to="/dashboard" className={location.pathname === '/dashboard' ? 'active' : ''} onClick={closeMenu}>
-                        Дашборд
-                    </Link>
+                    {currentUser && (
+                        <>
+                            <Link to="/dashboard" className={location.pathname === '/dashboard' ? 'active' : ''} onClick={closeMenu}>
+                                Дашборд
+                            </Link>
 
-                    <Link to="/goals" className={location.pathname === '/goals' ? 'active' : ''} onClick={closeMenu}>
-                        Цілі
-                    </Link>
+                            <Link to="/goals" className={location.pathname === '/goals' ? 'active' : ''} onClick={closeMenu}>
+                                Цілі
+                            </Link>
 
-                    <Link to="/habits" className={location.pathname === '/habits' ? 'active' : ''} onClick={closeMenu}>
-                        Звички
-                    </Link>
+                            <Link to="/habits" className={location.pathname === '/habits' ? 'active' : ''} onClick={closeMenu}>
+                                Звички
+                            </Link>
 
-                    <Link to="/diary" className={location.pathname === '/diary' ? 'active' : ''} onClick={closeMenu}>
-                        Щоденник
-                    </Link>
+                            <Link to="/diary" className={location.pathname === '/diary' ? 'active' : ''} onClick={closeMenu}>
+                                Щоденник
+                            </Link>
+                        </>
+                    )}
 
-                    <div className="mobile-actions">
-                        <button onClick={() => { toggleTheme(); closeMenu(); }} className="theme-toggle">
+                    {/* ВИПРАВЛЕНО: Кнопки тема + вийти */}
+                    <div className="header-actions">
+                        <button onClick={() => { toggleTheme(); closeMenu(); }} className="theme-toggle" title="Змінити тему">
                             {theme === 'light' ? '🌙' : '☀️'}
                         </button>
 
                         {currentUser ? (
-                            <button onClick={() => { logout(); closeMenu(); }} className="btn-secondary">Вийти</button>
+                            <button onClick={() => { logout(); closeMenu(); }} className="btn-logout">
+                                Вийти
+                            </button>
                         ) : (
-                            <Link to="/login" className="btn-nav-create" onClick={closeMenu}>Увійти</Link>
+                            <Link to="/login" className="btn-nav-create" onClick={closeMenu}>
+                                Увійти
+                            </Link>
                         )}
                     </div>
                 </nav>

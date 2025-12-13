@@ -1,6 +1,5 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-// ДОДАНО: Імпорт необхідних функцій для авторизації
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
@@ -18,7 +17,14 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-// Тепер ці функції працюють, бо ми їх імпортували зверху
+// Auth
 export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
+
+// ВИПРАВЛЕННЯ: Додай ці налаштування для Google Auth
+googleProvider.setCustomParameters({
+    prompt: 'select_account' // Завжди показувати вибір акаунту
+});
+
+// Firestore
 export const db = getFirestore(app);
